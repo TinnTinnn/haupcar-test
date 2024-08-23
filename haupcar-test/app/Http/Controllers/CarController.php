@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CarController extends Controller
 {
-    public function create($data)
+    public function create($data): Car
     {
         $car = new Car();
         $car->fill($data);
