@@ -11,7 +11,7 @@ class AppController extends Controller
 {
     public function index(): View
     {
-        $cars = Car::latest()->paginate(10);;
+        $cars = Car::latest()->paginate(8);;
         return view('cars.index', compact('cars'));
     }
 
