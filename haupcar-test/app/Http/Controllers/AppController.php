@@ -54,9 +54,9 @@ class AppController extends Controller
             ->with('success', 'Car deleted successfully!');
     }
 
-    public function toggleComplete(Car $car)
+    public function toggleAvailable(Car $car)
     {
-        $car->toggleComplete();
+        $car->toggleAvailable();
 
         return redirect()->back()->with('success', 'Car status updated successfully!');
     }

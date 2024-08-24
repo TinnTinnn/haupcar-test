@@ -14,11 +14,13 @@ class Car extends Model
         'engine_number',
         'license_plate',
         'color',
+        'note',
         'mileage'
     ];
 
-    public function toggleComplete() {
-        $this->completed = !$this->completed;
+    public function toggleAvailable() {
+        $this->status = !$this->status;
         $this->save();
     }
+
 }

@@ -25,6 +25,7 @@ class CarRequest extends FormRequest
             'license_plate' => 'nullable',
             'color' => 'nullable|string',
             'mileage' => 'nullable|integer',
+            'note' => 'nullable',
         ];
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $car->title)
+@section('title', $car->brand)
 
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
@@ -8,10 +8,9 @@
     <div class="mb-4">
 
         <a href="{{ route('cars.index') }}"
-           class="btn btn-info text-light">← Go back to the task list!</a>
+           class="btn btn-info text-light">← Go back to the car list!</a>
     </div>
 
-    <h3 class="text-xxl-center mb-4 fw-medium text-muted">{{ $car->brand }}</h3>
     <div class="card mb-4">
         <p class="mb-4 fw-small text-muted">Model : {{ $car->model }}</p>
         <p class="mb-4 fw-small text-muted">Year : {{ $car->year }}</p>
@@ -20,6 +19,7 @@
         <p class="mb-4 fw-small text-muted">License plate : {{ $car->license_plate }}</p>
         <p class="mb-4 fw-small text-muted">Color : {{ $car->color }}</p>
         <p class="mb-4 fw-small text-muted">Mileage : {{ $car->mileage }}</p>
+        <p class="mb-4 fw-small text-muted">Note : {{ $car->note }}</p>
     </div>
 
     {{--Show what time is last update. From by date to how many time pass you have updated it--}}
@@ -28,10 +28,10 @@
 
 
     <p class="mb-4">
-        @if($car->completed)
-            <span class="fw-medium text-success">Completed</span>
+        @if($car->status)
+            <span class="fw-medium text-warning">Rented</span>
         @else
-            <span class="fw-medium text-danger">Not completed</span>
+            <span class="fw-medium text-success">Available</span>
         @endif
     </p>
 
@@ -41,13 +41,15 @@
             <a href="{{ route('cars.edit', ['car'=> $car]) }}"
                class="btn btn-outline-primary">Edit</a>
         </div>
-        <form method="POST" action="{{ route('cars.toggle-complete', ['car' => $car]) }}">
-            @csrf
-            @method('PUT')
-            <button type="submit" class="btn btn-outline-success  text-nowrap">
-                Mark as {{ $car->completed ? 'not completed' : 'completed' }}
-            </button>
-        </form>
+        <div>
+            <form method="POST" action="{{ route('cars.toggle-available', ['car' => $car]) }}">
+                @csrf
+                @method('PUT')
+                <button class="btn btn-outline-info" type="submit">
+                    Mark as {{ $car->status ? 'Available' : 'Rented'}}
+                </button>
+            </form>
+        </div>
 
         <form action="{{ route('cars.destroy', ['car' => $car]) }}" method="POST"
         onsubmit="return confirm('คุณแน่ใจใช่มั้ย ที่จะลบข้อมูลของรถคันนี้?');">

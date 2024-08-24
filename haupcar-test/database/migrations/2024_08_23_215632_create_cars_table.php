@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('license_plate', 10)->nullable();
             $table->string('color')->nullable();
             $table->integer('mileage')->nullable();
-            $table->boolean('completed')->default(false);
+            $table->string('note', 100)->nullable();
+            $table->boolean('status')->default(false);
 
             $table->timestamps();
         });
