@@ -6,11 +6,12 @@
 
 @section('content')
     <div class="mb-4">
+
         <a href="{{ route('cars.index') }}"
-           class="fw-medium text-decoration-underline text-info">← Go back to the task list!</a>
+           class="btn btn-info text-light">← Go back to the task list!</a>
     </div>
 
-    <p class="mb-4 fw-medium text-muted">{{ $car->brand }}</p>
+    <h3 class="text-xxl-center mb-4 fw-medium text-muted">{{ $car->brand }}</h3>
     <div class="card mb-4">
         <p class="mb-4 fw-small text-muted">Model : {{ $car->model }}</p>
         <p class="mb-4 fw-small text-muted">Year : {{ $car->year }}</p>
@@ -48,7 +49,8 @@
             </button>
         </form>
 
-        <form action="{{ route('cars.destroy', ['car' => $car]) }}" method="POST">
+        <form action="{{ route('cars.destroy', ['car' => $car]) }}" method="POST"
+        onsubmit="return confirm('คุณแน่ใจใช่มั้ย ที่จะลบข้อมูลของรถคันนี้?');">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-outline-danger">Delete</button>
