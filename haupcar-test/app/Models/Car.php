@@ -16,4 +16,9 @@ class Car extends Model
         'color',
         'mileage'
     ];
+
+    public function toggleComplete() {
+        $this->completed = !$this->completed;
+        $this->save();
+    }
 }

@@ -2,43 +2,62 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarRequest;
+use App\Models\Car;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class AppController extends Controller
 {
-    public function index() : View
+    public function index(): View
     {
-        return view('index');
+        $cars = Car::latest()->paginate(10);;
+        return view('cars.index', compact('cars'));
     }
 
-    public function create() : View
+    public function create(): View
     {
         return view('create');
     }
 
-    public function store(Request $request)
+    public function store(CarRequest $request)
     {
-        return view('store');
+        $car = Car::create($request->validated());
+
+        return redirect()->route('cars.show', ['car' => $car->id])
+            ->with('success', 'Car created successfully.');
     }
 
-    public function show($id)
+    public function show(Car $car): View
     {
-        return view('show');
+        return view('cars.show', compact('car'));
     }
 
-    public function edit()
+    public function edit(Car $car): View
     {
-        return view('edit');
+        return view('cars.edit', compact('car'));
     }
 
-    public function update(Request $request, $id)
+    public function update(CarRequest $request, Car $car)
     {
-        return view('update');
+        $car->update($request->validated());
+
+        return redirect()->route('cars.show', ['car' => $car->id])
+            ->with('success', 'Car updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Car $car)
     {
-        return view('destroy');
+        $car->delete();
+
+        return redirect()->route('cars.index')
+            ->with('success', 'Car deleted successfully!');
+    }
+
+    public function toggleComplete(Car $car)
+    {
+        $car->toggleComplete();
+
+        return redirect()->back()->with('success', 'Car status updated successfully!');
     }
 }
