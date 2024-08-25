@@ -50,11 +50,11 @@
                     Updated {{ $car->updated_at->diffForHumans() }}</p>
 
 
-                <p class="mb-4">
+                <p class="mb-4 text-opacity-50">
                     @if($car->status)
-                        <span class="fw-medium text-warning">Rented</span>
+                        status : <span class="fw-medium text-warning">Rented</span>
                     @else
-                        <span class="fw-medium text-success">Available</span>
+                        status : <span class="fw-medium text-success">Available</span>
                     @endif
                 </p>
 
@@ -65,7 +65,7 @@
                            class="btn btn-outline-primary">Edit</a>
                     </div>
                     <div>
-                        <form  method="POST" action="{{ route('cars.toggle-available', ['car' => $car]) }}">
+                        <form method="POST" action="{{ route('cars.toggle-available', ['car' => $car]) }}">
                             @csrf
                             @method('PUT')
                             <button class="btn btn-outline-info" type="submit">

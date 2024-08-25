@@ -5,7 +5,7 @@
 @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 @section('content')
-    <div class="container">
+    <div class="container-md my-4">
         <form method="POST"
               action="{{ isset($car) ? route('cars.update', ['car' => $car->id]) : route('cars.store') }}">
             @csrf
@@ -14,7 +14,7 @@
             @endisset
             <div class="mb-4">
                 <label for="brand" class="d-block text-uppercase text-secondary mb-2">
-                    Brand
+                    Brand :
                 </label>
                 <input type="text" name="brand" id="brand" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('brand') ? 'border-danger' : '' }}"
@@ -26,7 +26,7 @@
 
             <div class="mb-4">
                 <label for="model" class="d-block text-uppercase text-secondary mb-2">
-                    Model
+                    Model :
                 </label>
                 <input type="text" name="model" id="brand" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('model') ? 'border-danger' : '' }}"
@@ -38,7 +38,7 @@
 
             <div class="mb-4">
                 <label for="year" class="d-block text-uppercase text-secondary mb-2">
-                    Year
+                    Year :
                 </label>
                 <input type="text" name="year" id="year" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('year') ? 'border-danger' : '' }}"
@@ -50,7 +50,7 @@
 
             <div class="mb-4">
                 <label for="vin" class="d-block text-uppercase text-secondary mb-2">
-                    Vin
+                    VIN :
                 </label>
                 <input type="text" name="vin" id="vin" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('vin') ? 'border-danger' : '' }}"
@@ -62,7 +62,7 @@
 
             <div class="mb-4">
                 <label for="engine_number" class="d-block text-uppercase text-secondary mb-2">
-                    Engine Number
+                    Engine Number :
                 </label>
                 <input type="text" name="engine_number" id="engine_number" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('engine_number') ? 'border-danger' : '' }}"
@@ -74,7 +74,7 @@
 
             <div class="mb-4">
                 <label for="license_plate" class="d-block text-uppercase text-secondary mb-2">
-                    License Plate
+                    License Plate :
                 </label>
                 <input type="text" name="license_plate" id="license_plate" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('license_plate') ? 'border-danger' : '' }}"
@@ -86,7 +86,7 @@
 
             <div class="mb-4">
                 <label for="color" class="d-block text-uppercase text-secondary mb-2">
-                    Color
+                    Color :
                 </label>
                 <input type="text" name="color" id="color" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('color') ? 'border-danger' : '' }}"
@@ -98,7 +98,7 @@
 
             <div class="mb-4">
                 <label for="mileage" class="d-block text-uppercase text-secondary mb-2">
-                    Mileage
+                    Mileage :
                 </label>
                 <input type="text" name="mileage" id="mileage" class="form-control shadow-sm w-100 py-2 px-3 text-secondary
             {{ $errors->has('mileage') ? 'border-danger' : '' }}"
@@ -109,7 +109,7 @@
             </div>
 
             <div class="mb-4">
-                <label for="note">Note</label>
+                <label for="note" class=" d-block text-uppercase text-secondary mb-2">Note :</label>
                 <textarea name="note" id="note" rows="5"
                           class="form-control shadow-sm w-100 py-2 px-3 text-secondary
                       {{ $errors->has('title') ? 'border-danger' : '' }}">

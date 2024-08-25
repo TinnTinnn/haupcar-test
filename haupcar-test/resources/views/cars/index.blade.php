@@ -54,7 +54,7 @@
                             <a href="{{ route('cars.edit', ['car'=> $car]) }}" class="settings" title="Edit" data-toggle="tooltip">
                                 <i class="material-icons">&#xE8B8;</i>
                             </a>
-                            <a href="{{ route('cars.destroy', ['car' => $car]) }}" class="delete" title="Delete" data-toggle="tooltip">
+                            <a href="{{ route('cars.destroy', ['car' => $car]) }}" class="delete" title="GoToDelete" data-toggle="tooltip">
                                 <i class="material-icons">&#xE5C9;</i>
                             </a>
                         </td>
