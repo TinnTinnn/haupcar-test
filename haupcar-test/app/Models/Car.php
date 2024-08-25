@@ -15,7 +15,8 @@ class Car extends Model
         'license_plate',
         'color',
         'note',
-        'mileage'
+        'mileage',
+        'status'
     ];
 
     public function toggleAvailable() {
