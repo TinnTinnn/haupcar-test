@@ -112,8 +112,7 @@
                 <label for="note" class=" d-block text-uppercase text-secondary mb-2">Note :</label>
                 <textarea name="note" id="note" rows="5"
                           class="form-control shadow-sm w-100 py-2 px-3 text-secondary
-                      {{ $errors->has('title') ? 'border-danger' : '' }}">
-                {{ $car->note ?? old('note') }}</textarea>
+                      {{ $errors->has('title') ? 'border-danger' : '' }}">{{ $car->note ?? old('note') }}</textarea>
                 @error('note')
                 <p class="error-message">{{ $message }}</p>
                 @enderror
